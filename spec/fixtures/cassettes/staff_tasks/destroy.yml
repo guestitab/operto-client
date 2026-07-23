@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://teams-api.operto.com/api/v1/stafftasks/123456
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - VRS <SECRET_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Jan 2026 10:00:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.18.0
+      X-Powered-By:
+      - PHP/7.3.33
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Cache-Control, Content-Type, Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - '1'
+      Allow:
+      - DELETE
+    body:
+      encoding: UTF-8
+      string: '{"ReasonCode":200,"ReasonText":"Success"}'
+  recorded_at: Thu, 16 Jan 2026 10:00:00 GMT
+recorded_with: VCR 6.3.1

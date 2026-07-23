@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://teams-api.operto.com/api/v1/issues
+    body:
+      encoding: UTF-8
+      string: '{"request":"{\"IssueID\":\"2181372\",\"Update\":true,\"ClosedDate\":\"20260415\"}"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.1
+      Authorization:
+      - VRS <SECRET_TOKEN>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Wed, 15 Apr 2026 02:35:24 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.18.0
+      X-Powered-By:
+      - PHP/7.3.33
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Cache-Control, Content-Type, Authorization, Accept-Language,Content-Language,Last-Event-ID,X-HTTP-Method-Override,
+        Offline, Version
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - '1'
+      Allow:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"code":201,"message":"Data Updated Successfully","Data":{"IssueID":"2181372","Update":true,"ClosedDate":"20260415"}}'
+  recorded_at: Wed, 15 Apr 2026 02:35:24 GMT
+recorded_with: VCR 6.4.0

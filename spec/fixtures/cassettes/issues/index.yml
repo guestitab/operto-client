@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teams-api.operto.com/api/v1/issues?CreateStartDate=20260305&Sort=IssueID%20desc&closed=0&page=1&per_page=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"IssueID":2160901,"StatusID":0,"IssueType":1,"Urgent":true,"Issue":"Sample issue","Notes":"","StaffNotes":"","PropertyID":123810,"Billable":false,"CreateDate":"2026-04-03","SubmittedByServicerID":25520,"Images":[]}],"total_items":2}'
+  recorded_at: Wed, 01 Jan 2025 00:00:00 GMT
+recorded_with: VCR 6.3.1

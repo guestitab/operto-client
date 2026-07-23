@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://teams-api.operto.com/api/v1/stafftasks
+    body:
+      encoding: UTF-8
+      string: '{"TaskID":"44683131","StaffID":"41295","PropertyID":"110784"}'
+    headers:
+      User-Agent:
+      - Faraday v2.14.0
+      Authorization:
+      - VRS <SECRET_TOKEN>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 16 Jan 2026 10:00:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.18.0
+      X-Powered-By:
+      - PHP/7.3.33
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Cache-Control, Content-Type, Authorization, Accept-Language,Content-Language,Last-Event-ID,X-HTTP-Method-Override,
+        Offline, Version
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - '1'
+      Allow:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"StaffTaskID":123456,"ReasonCode":200}'
+  recorded_at: Thu, 16 Jan 2026 10:00:00 GMT
+recorded_with: VCR 6.3.1

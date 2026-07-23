@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teams-api.operto.com/api/v1/staff?page=1&per_page=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"StaffID":41295,"Name":"John Appleseed","Abbreviation":"JohApp","Email":"john.appleseed@example.com","Phone":"0000000000","CountryID":203,"Active":true,"CreateDate":"2025-01-07"}],"total_items":3}'
+  recorded_at: Wed, 01 Jan 2025 00:00:00 GMT
+recorded_with: VCR 6.3.1

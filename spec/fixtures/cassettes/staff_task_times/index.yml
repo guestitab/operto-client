@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teams-api.operto.com/api/v1/stafftasktimes?Sort=StaffTaskTimeID%20desc&TaskID=17094481&page=1&per_page=50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"StaffTaskTimeID":2802102,"StaffID":25525,"TaskID":17094481,"ClockIn":"2023-08-14 13:35:00","ClockOut":"2023-08-14 14:35:00","Note":"Sample note."}],"total_items":3}'
+  recorded_at: Wed, 01 Jan 2025 00:00:00 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teams-api.operto.com/api/v1/tasks?PropertyID=111036&Sort=TaskID%20desc&page=1&per_page=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"TaskID":39923513,"PropertyID":111036,"ApprovedDate":null,"CompleteConfirmedDate":null,"Staff":[{"StaffID":40277,"Name":"HC - Jane Doe","Email":"jane.doe@example.com","Active":true}]}],"total_items":189}'
+  recorded_at: Wed, 01 Jan 2025 00:00:00 GMT
+recorded_with: VCR 6.3.1

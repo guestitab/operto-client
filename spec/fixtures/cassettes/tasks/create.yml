@@ -1,0 +1,58 @@
+---
+http_interactions:
+  - request:
+      method: post
+      uri: https://teams-api.operto.com/api/v1/tasks
+      body:
+        encoding: UTF-8
+        string:
+          '{"PropertyID":"110784","TaskRuleID":"27986","TaskName":"[TEST] -
+          API spec create","TaskDescription":"Detailed test task","TaskStartDate":"2025-12-01","TaskDate":"2025-12-01","TaskStartTime":9,"TaskTime":9,"TaskCompleteByDate":"2025-12-02","TaskCompleteByTime":9}'
+      headers:
+        User-Agent:
+          - Faraday v2.14.0
+        Authorization:
+          - VRS <SECRET_TOKEN>
+        Content-Type:
+          - application/json
+        Accept-Encoding:
+          - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+        Accept:
+          - "*/*"
+    response:
+      status:
+        code: 201
+        message: Created
+      headers:
+        Date:
+          - Mon, 10 Nov 2025 09:26:08 GMT
+        Content-Type:
+          - application/json
+        Transfer-Encoding:
+          - chunked
+        Connection:
+          - keep-alive
+        Server:
+          - nginx/1.18.0
+        X-Powered-By:
+          - PHP/7.3.33
+        Cache-Control:
+          - no-cache, private
+        Access-Control-Allow-Origin:
+          - "*"
+        Access-Control-Allow-Headers:
+          - X-Requested-With, Cache-Control, Content-Type, Authorization, Accept-Language,Content-Language,Last-Event-ID,X-HTTP-Method-Override,
+            Offline, Version
+        Access-Control-Allow-Methods:
+          - GET, POST, PUT, DELETE, OPTIONS
+        Access-Control-Allow-Credentials:
+          - "1"
+        Allow:
+          - GET, POST
+      body:
+        encoding: UTF-8
+        string:
+          '{"TaskID":44683131,"TaskName":"[TEST] - API spec create","TaskDescription":"Detailed
+          test task","CreateDate":"20251110","TaskStartDate":"20251201","TaskStartTime":9,"TaskCompleteByDate":"20251202","TaskCompleteByTime":9,"TaskDate":"20251201","TaskTime":9,"PropertyID":110784,"PropertyBookingID":7797550}'
+    recorded_at: Mon, 10 Nov 2025 09:26:09 GMT
+recorded_with: VCR 6.3.1

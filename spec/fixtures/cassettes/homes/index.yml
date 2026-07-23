@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teams-api.operto.com/api/v1/properties?page=1&per_page=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"data":[{"PropertyID":110784,"PropertyName":"Sample Property","IntegrationCompanyPropertyID":"aaaa1111bbbb2222cccc3333","CreateDate":"20230324"}],"total_items":823}'
+  recorded_at: Wed, 01 Jan 2025 00:00:00 GMT
+recorded_with: VCR 6.3.1

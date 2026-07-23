@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://teams-api.operto.com/api/v1/oauth/login
+    body:
+      encoding: UTF-8
+      string: '{"API_Key":"test","API_Value":"test"}'
+    headers:
+      User-Agent:
+      - Faraday v2.13.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 17 Jul 2025 04:17:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Server:
+      - nginx/1.18.0
+      X-Powered-By:
+      - PHP/7.3.33
+      Cache-Control:
+      - no-cache, private
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - X-Requested-With, Cache-Control, Content-Type, Authorization, Accept-Language,Content-Language,Last-Event-ID,X-HTTP-Method-Override,
+        Offline, Version
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - '1'
+      Allow:
+      - POST
+    body:
+      encoding: UTF-8
+      string: '{"Access_Token":{"token":"test-token-value","Created":"202507170417","Expiry":"3600"},"Refresh_Token":{"token":"test-token-value","Created":"202507170417","Expiry":"86400"}}'
+  recorded_at: Thu, 17 Jul 2025 04:17:12 GMT
+recorded_with: VCR 6.3.1
