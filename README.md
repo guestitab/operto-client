@@ -9,7 +9,7 @@ framework dependency.
 
 ```ruby
 # Gemfile
-gem 'operto', github: 'guestitab/oporto-client'
+gem 'operto', github: 'guestitab/operto-client'
 ```
 
 ```sh
@@ -33,8 +33,10 @@ end
 
 ### Token store
 
-The gem performs the OAuth login/refresh but delegates persistence and caching
-to your store. Implement these four methods:
+The gem defaults to an in-memory `Operto::MemoryTokenStore` (fine for a single
+long-running process — the token re-issues after a restart). For shared or
+persistent storage, provide your own store: the gem performs the OAuth
+login/refresh and delegates persistence to it via four methods:
 
 | Method | Returns / does |
 | --- | --- |

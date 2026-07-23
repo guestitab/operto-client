@@ -7,6 +7,7 @@ require 'oj'
 
 require_relative 'operto/version'
 require_relative 'operto/error'
+require_relative 'operto/memory_token_store'
 require_relative 'operto/config'
 require_relative 'operto/operation'
 require_relative 'operto/client'

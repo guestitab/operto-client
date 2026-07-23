@@ -7,6 +7,7 @@ module Operto
 
     def initialize
       @base_url = 'https://teams-api.operto.com/api/v1/'.freeze
+      @token_store = MemoryTokenStore.new
     end
   end
 end

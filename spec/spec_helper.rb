@@ -3,8 +3,6 @@ require 'vcr'
 require 'webmock/rspec'
 require 'active_support/testing/time_helpers'
 
-require_relative 'support/test_token_store'
-
 Time.zone = 'UTC'
 
 VCR.configure do |config|
@@ -22,7 +20,9 @@ RSpec.configure do |config|
     Operto.configure do |operto|
       operto.client_id = 'test-client-id'
       operto.secret = 'test-secret'
-      operto.token_store = TestTokenStore.with_active_token
+      operto.token_store = Operto::MemoryTokenStore.new.tap do |store|
+        store.save(access_token: 'test-access-token', expires_at: Time.now + 3600)
+      end
     end
   end
 end
