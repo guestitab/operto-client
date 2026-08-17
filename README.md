@@ -9,7 +9,7 @@ framework dependency.
 
 ```ruby
 # Gemfile
-gem 'operto', github: 'guestitab/operto-client'
+gem 'operto', '~> 0.2.0'
 ```
 
 ```sh

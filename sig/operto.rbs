@@ -1,0 +1,112 @@
+# Public API of the gem, mirroring the inline `# @rbs` annotations in lib/.
+# Shipped with the gem so host apps pick it up through `rbs collection`.
+module Operto
+  VERSION: ::String
+
+  def self.configure: () { (Config) -> void } -> void
+  def self.config: () -> Config
+
+  class Error < ::StandardError
+  end
+
+  # Raised by operations for malformed arguments before any network call.
+  class ArgumentError < Error
+  end
+
+  class Config
+    attr_accessor client_id: ::String?
+    attr_accessor secret: ::String?
+    attr_accessor base_url: ::String
+
+    # Duck-typed: the host may inject its own store (see MemoryTokenStore).
+    attr_accessor token_store: untyped
+  end
+
+  class MemoryTokenStore
+    REFRESH_BUFFER: ::Integer
+
+    def active: () -> untyped
+    def refreshable: () -> untyped
+    def save: (access_token: ::String, expires_at: ::Time, ?refresh_token: ::String?, ?refresh_expires_at: ::Time?) -> untyped
+    def clear: () -> nil
+  end
+
+  module IssueTypes
+    ISSUE_TYPES: ::Hash[::Integer, ::String]
+  end
+
+  # #call! returns the same Result as #call, raising the failure instead of
+  # wrapping it — hence the `alias call! call` on every operation below.
+  module Operation
+    def call!: (*untyped, **untyped) -> untyped
+  end
+
+  module AccessTokens
+    class Upsert
+      def call: () -> ::Dry::Monads::Result[untyped]
+      alias call! call
+    end
+  end
+
+  module Tasks
+    class Create
+      def call: (attributes: ::Hash[::Symbol, untyped]) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+
+    class Update
+      def call: (task_id: ::String, attributes: ::Hash[::Symbol, untyped]) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+
+    class Index
+      def call: (?attributes: ::Hash[::Symbol, untyped], ?skip: ::Integer, ?take: ::Integer) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+  end
+
+  module StaffTasks
+    class Create
+      def call: (task_id: ::String, staff_id: ::String, property_id: ::String) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+
+    class Destroy
+      def call: (staff_task_id: ::String) -> ::Dry::Monads::Result[bool]
+      alias call! call
+    end
+  end
+
+  module StaffTaskTimes
+    class Index
+      def call: (?attributes: ::Hash[::Symbol, untyped], ?skip: ::Integer, ?take: ::Integer) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+  end
+
+  module Issues
+    class Index
+      def call: (start_date: ::Date, ?skip: ::Integer, ?take: ::Integer) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+
+    class Close
+      def call: (issue_id: ::Integer | ::String) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+  end
+
+  module Homes
+    class Index
+      def call: (?skip: ::Integer, ?take: ::Integer) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+  end
+
+  module Staff
+    class Index
+      def call: (?skip: ::Integer, ?take: ::Integer) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+  end
+end
