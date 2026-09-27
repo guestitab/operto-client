@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://teams-api.operto.com/api/v1/tasks/39923513
+    body:
+      encoding: UTF-8
+      string: "{\"TaskDescription\":\"Make up the sofa bed\"}"
+    headers:
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: "{\"TaskID\":39923513,\"TaskName\":\"Check Out Clean \",\"TaskDescription\":\"Make up the sofa bed\",\"CreateDate\":\"20260924\",\"TaskStartDate\":\"20261015\",\"TaskStartTime\":10,\"TaskCompleteByDate\":\"20261015\",\"TaskCompleteByTime\":15,\"Completed\":false,\"CompleteConfirmedDatetime\":null,\"TaskDate\":\"20261015\",\"TaskTime\":10,\"TaskTimeMinutes\":null,\"PropertyID\":111036}"
+  recorded_at: Sun, 27 Sep 2026 00:00:00 GMT
+recorded_with: VCR 6.3.1

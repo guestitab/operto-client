@@ -4,12 +4,11 @@ module Operto
       include Operto::Operation
       include Shared
 
-      # @rbs (task_id: ::String, attributes: ::Hash[::Symbol, untyped]) -> Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      # @rbs (task_id: ::String | ::Integer, attributes: ::Hash[::Symbol, untyped]) -> Dry::Monads::Result[::Hash[::Symbol, untyped]]
       def call(task_id:, attributes:)
         validate_arguments!(task_id, attributes)
 
-        request_attributes = prepare_attributes(attributes).compact_blank
-        response = Operto::Client.connection.put("tasks/#{task_id}", request_attributes)
+        response = Operto::Client.connection.put("tasks/#{task_id}", request_attributes(attributes))
 
         handle_task_response(response)
       rescue StandardError => e

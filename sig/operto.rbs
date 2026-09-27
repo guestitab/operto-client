@@ -13,6 +13,10 @@ module Operto
   class ArgumentError < Error
   end
 
+  # Raised when Operto answers a single-record read with nothing.
+  class NotFoundError < Error
+  end
+
   class Config
     attr_accessor client_id: ::String?
     attr_accessor secret: ::String?
@@ -55,7 +59,12 @@ module Operto
     end
 
     class Update
-      def call: (task_id: ::String, attributes: ::Hash[::Symbol, untyped]) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      def call: (task_id: ::String | ::Integer, attributes: ::Hash[::Symbol, untyped]) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
+      alias call! call
+    end
+
+    class Show
+      def call: (task_id: ::String | ::Integer) -> ::Dry::Monads::Result[::Hash[::Symbol, untyped]]
       alias call! call
     end
 

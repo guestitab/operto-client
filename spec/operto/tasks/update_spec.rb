@@ -14,8 +14,18 @@ RSpec.describe Operto::Tasks::Update do
     }
   end
 
-  context 'with valid arguments', vcr: { cassette_name: 'tasks/update' } do
+  context 'with valid arguments', vcr: { cassette_name: 'tasks/update', match_requests_on: %i[method uri body] } do
     it 'returns the task id' do
+      expect(result.value!).to eq(task_id:)
+    end
+  end
+
+  context 'with only a description',
+          vcr: { cassette_name: 'tasks/update_description', match_requests_on: %i[method uri body] } do
+    let(:task_id) { 39_923_513 }
+    let(:attributes) { { description: 'Make up the sofa bed' } }
+
+    it 'sends nothing but the description' do
       expect(result.value!).to eq(task_id:)
     end
   end

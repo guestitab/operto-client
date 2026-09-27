@@ -13,7 +13,7 @@ RSpec.describe Operto::Tasks::Create do
     }
   end
 
-  context 'with valid arguments', vcr: { cassette_name: 'tasks/create' } do
+  context 'with valid arguments', vcr: { cassette_name: 'tasks/create', match_requests_on: %i[method uri body] } do
     it 'creates the task and returns its id' do
       expect(result.value!).to eq(task_id: 44_683_131)
     end
