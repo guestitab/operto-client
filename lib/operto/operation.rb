@@ -19,13 +19,5 @@ module Operto
       key, reason = attrs.first
       raise Operto::ArgumentError, "#{key}: #{reason}"
     end
-
-    def required_attribute!(key)
-      raise Operto::ArgumentError, "#{key}: required"
-    end
-
-    def invalid_attribute!(key, type:)
-      raise Operto::ArgumentError, "#{key}: expected #{type}"
-    end
   end
 end

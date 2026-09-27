@@ -25,7 +25,7 @@ and a token store via `Operto.configure`.
 - Avoid multi-line method chains under 160 characters.
 - Operations: `Operto::<Resource>::<Action>`, `include Operto::Operation`, `def call(...)`,
   return `Dry::Monads::Result`, invoke with a fresh instance (`Op.new.call(...)` / `Op.new.call!(...)`).
-- Validate arguments up front with `argument!` / `required_attribute!` before any network call.
+- Validate arguments up front with `argument!` (e.g. `argument! task_id: :required`) before any network call.
 - Keep all HTTP and response normalization in `Operto::Client` and the operations; never leak
   Operto's wire keys (`PropertyID`, `TaskRuleID`, …) past the operation boundary.
 - No `Rails`, `Time.zone` aside, or app constants — the gem stays framework-free (host injects config).
