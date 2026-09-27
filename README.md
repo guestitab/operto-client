@@ -9,7 +9,7 @@ framework dependency.
 
 ```ruby
 # Gemfile
-gem 'operto', '~> 0.2.0'
+gem 'operto', '~> 0.3.0'
 ```
 
 ```sh
@@ -66,7 +66,7 @@ Operto::Tasks::Create.new.call(
 `#call` returns a `Result`; `#call!` unwraps it and raises the underlying
 failure. Operations are grouped by resource:
 
-- `Operto::Tasks::{Create,Update,Index}`
+- `Operto::Tasks::{Create,Update,Index,Show}`
 - `Operto::StaffTasks::{Create,Destroy}` · `Operto::StaffTaskTimes::Index`
 - `Operto::Issues::{Index,Close}` · `Operto::Homes::Index` · `Operto::Staff::Index`
 
