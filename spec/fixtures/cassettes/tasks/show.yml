@@ -1,0 +1,23 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://teams-api.operto.com/api/v1/tasks/39923514
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: "{\"url\":\"/api/v1/tasks/39923514\",\"has_more\":false,\"data\":[{\"TaskID\":39923514,\"IssueID\":null,\"TaskRuleID\":20574,\"PropertyBookingID\":11111111,\"ReferenceID\":\"000000000000000000000001\",\"PropertyID\":111036,\"TaskName\":\"Check Out Clean \",\"TaskDescription\":\"Vacuum the balcony\",\"Approved\":false,\"ApprovedDate\":null,\"Completed\":\"1\",\"Billable\":false,\"LaborAmount\":0,\"MaterialsAmount\":0,\"TaskDate\":\"2026-10-15\",\"CompleteConfirmedDate\":\"2026-10-15 13:40:44\",\"CreateDate\":\"2026-09-24\",\"MinTimeToComplete\":2,\"MaxTimeToComplete\":3,\"TaskStartDate\":\"2026-10-15\",\"TaskStartTime\":\"10:00\",\"TaskCompleteByTime\":\"15:30\",\"TaskCompleteByDate\":\"2026-10-15\",\"TaskTime\":\"10:00:00\",\"InternalNotes\":null,\"PackLinen\":false,\"RetrieveLinen\":true,\"TaskActive\":true,\"Flag1\":false,\"Flag2\":false,\"LinenCounts\":\"0,1,3,3,0,1,3,3\",\"ParentTaskID\":null,\"Staff\":[{\"StaffID\":40277,\"Name\":\"HC - Jane Doe\",\"Email\":\"jane.doe@example.com\",\"Active\":true}],\"TaskImages\":[]}],\"page_count\":1,\"page_size\":25,\"page\":1,\"total_items\":1}"
+  recorded_at: Sun, 27 Sep 2026 00:00:00 GMT
+recorded_with: VCR 6.3.1

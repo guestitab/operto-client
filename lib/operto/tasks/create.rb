@@ -8,8 +8,8 @@ module Operto
       def call(attributes:)
         validate_arguments!(attributes)
 
-        request_attributes = prepare_attributes(attributes)
-        response = Operto::Client.connection.post('tasks', request_attributes)
+        # A create always sends a description, '-' when there is none.
+        response = Operto::Client.connection.post('tasks', request_attributes(attributes.reverse_merge(description: nil)))
 
         handle_task_response(response)
       rescue StandardError => e

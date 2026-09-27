@@ -3,6 +3,7 @@ module Operto
     class Index
       include Operto::Operation
       include FilteredPagination
+      include Shared
 
       FILTER_MAPPINGS = {
         property_id: 'PropertyID',
@@ -37,33 +38,12 @@ module Operto
       private
 
       def format_results(body)
-        results = body[:data].map do |task|
-          {
-            task_id: task[:TaskID],
-            property_id: task[:PropertyID],
-            approved_at: task[:ApprovedDate]&.to_datetime,
-            completed_at: task[:CompleteConfirmedDate]&.to_datetime,
-            staff: extract_staff(task[:Staff])
-          }
-        end
+        results = body[:data].map { |task| normalize_task(task) }
 
         {
           results:,
           count: body[:total_items] || results.size
         }
-      end
-
-      def extract_staff(staff_array)
-        return [] if staff_array.blank?
-
-        staff_array.map do |staff|
-          {
-            staff_id: staff[:StaffID],
-            name: staff[:Name],
-            email: staff[:Email]&.downcase,
-            active: staff[:Active]
-          }
-        end
       end
     end
   end
