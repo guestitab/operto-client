@@ -16,4 +16,18 @@ RSpec.describe Operto::Homes::Index do
       )
     end
   end
+
+  context 'with an unparseable create date' do
+    before do
+      stub_request(:get, 'https://teams-api.operto.com/api/v1/properties?page=1&per_page=2')
+        .to_return(
+          body: { data: [{ PropertyID: 110_784, CreateDate: 'n/a' }] }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+    end
+
+    it 'keeps the raw value' do
+      expect(result.value![:results].first[:created_at]).to eq('n/a')
+    end
+  end
 end

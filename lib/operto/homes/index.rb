@@ -46,7 +46,7 @@ module Operto
         return if value.blank?
 
         Date.strptime(value.to_s, '%Y%m%d')
-      rescue ArgumentError
+      rescue Date::Error
         value
       end
     end
