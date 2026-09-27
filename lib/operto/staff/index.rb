@@ -51,7 +51,7 @@ module Operto
         return if value.blank?
 
         Date.parse(value.to_s)
-      rescue ArgumentError
+      rescue Date::Error
         value
       end
     end

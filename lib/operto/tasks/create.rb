@@ -22,7 +22,7 @@ module Operto
         argument! attributes: :invalid unless attributes.is_a?(Hash) && attributes.present?
 
         required_keys.each do |key|
-          required_attribute!(key) if attributes[key].blank?
+          argument!(key => :required) if attributes[key].blank?
         end
       end
 
