@@ -7,7 +7,8 @@ and a token store via `Operto.configure`.
 ## Project Structure
 
 - `lib/operto.rb` — entry point: requires, and the `Operto.configure`/`Operto.config` accessors.
-- `lib/operto/client.rb` — the single HTTP gateway (Faraday connection, auth header, retry, response envelope).
+- `lib/operto/client.rb` — the single HTTP gateway (Faraday connection, retry, response envelope).
+- `lib/operto/authorization.rb` — the auth middleware: signs each request, renews a rejected token and replays once.
 - `lib/operto/config.rb` — injected `client_id`, `secret`, `token_store`, `base_url`.
 - `lib/operto/operation.rb` — the monadic base (`#call` returns a Result, `#call!` unwraps/raises).
 - `lib/operto/<resource>/<action>.rb` — one operation per file, namespaced `Operto::<Resource>::<Action>`.

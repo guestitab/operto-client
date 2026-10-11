@@ -43,7 +43,7 @@ login/refresh and delegates persistence to it via four methods:
 | `active` | the current non-expired token, or `nil` |
 | `refreshable` | a token whose refresh token is still valid, or `nil` |
 | `save(access_token:, expires_at:, refresh_token: nil, refresh_expires_at: nil)` | persist and return the token |
-| `clear` | drop the cached token (called after a `401`) |
+| `clear` | retire the token so the next `active` returns `nil` (called when Operto rejects it, before the renewal) |
 
 A token responds to `access_token`, `refresh_token`, `refresh_expires_at`, and
 `expired?`.
