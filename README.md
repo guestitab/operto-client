@@ -9,7 +9,7 @@ framework dependency.
 
 ```ruby
 # Gemfile
-gem 'operto', '~> 0.3.0'
+gem 'operto', '~> 0.4.0'
 ```
 
 ```sh

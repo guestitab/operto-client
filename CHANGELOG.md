@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 - 2026-10-12
+
+- When Operto rejects the access token (a `401` or an `auth_token_expired` response), the client clears the token store, renews the token and replays the request once.
+- A host token store's `clear` must retire the token so the next `active` returns `nil`.
+- Retry only idempotent requests, and only on `502`, `503` and `504`. `POST` and `PATCH` requests and `429` responses are no longer retried.
+- `Homes::Index` and `Staff::Index` keep an unparseable create date as the raw value instead of failing with `Date::Error`.
+
 ## 0.3.0 - 2026-09-27
 
 - `Tasks::Index` returns the whole task: rule, booking, name, description, start and due times, and the active and completion flags.
