@@ -10,15 +10,14 @@ module Operto
       interval: 1.0,
       interval_randomness: 0.5,
       backoff_factor: 2,
-      retry_statuses: [401, 429, 502, 503, 504],
+      retry_statuses: [502, 503, 504],
       exceptions: [*Faraday::Retry::Middleware::DEFAULT_EXCEPTIONS, Faraday::ConnectionFailed],
-      methods: [*Faraday::Retry::Middleware::IDEMPOTENT_METHODS, :patch, :post],
-      retry_block: ->(env:, **) { Operto.config.token_store.clear if env.status == 401 }
+      methods: Faraday::Retry::Middleware::IDEMPOTENT_METHODS
     }.freeze
 
     def connection(url: Operto.config.base_url, skip_auth: false)
       Faraday.new(url:) do |builder|
-        builder.request :authorization, 'VRS', -> { auth_token } unless skip_auth
+        builder.use Operto::Authorization unless skip_auth
 
         builder.request :json
         builder.request :retry, RETRY_OPTIONS
