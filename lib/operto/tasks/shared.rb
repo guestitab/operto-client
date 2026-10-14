@@ -73,8 +73,11 @@ module Operto
       def task_time(date, time)
         return if date.blank?
 
+        day = Time.zone.parse(date.to_s)
         hour, minute = time.to_s.split(':')
-        Time.zone.parse(date.to_s).change(hour: hour.to_i, min: minute.to_i)
+        day.change(hour: hour.to_i, min: minute.to_i)
+      rescue ::ArgumentError
+        day
       end
 
       def extract_staff(staff)
