@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1 - 2026-10-14
+
+- `Tasks::Index`, `Tasks::Show`, `Tasks::Create` and `Tasks::Update` read an out-of-range start or due time (such as `100:100`) as the date with no time instead of failing with `ArgumentError`.
+
 ## 0.4.0 - 2026-10-12
 
 - When Operto rejects the access token (a `401` or an `auth_token_expired` response), the client clears the token store, renews the token and replays the request once.
