@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://teams-api.operto.com/api/v1/issues?CreateStartDate=20260305&Sort=IssueID%20desc&closed=0&page=1&per_page=2
+    uri: https://apiv1.teams.operto.com/issues?CreateStartDate=20260305&Sort=IssueID%20desc&closed=0&page=1&per_page=2
     body:
       encoding: US-ASCII
       string: ''

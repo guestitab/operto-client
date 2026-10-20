@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://teams-api.operto.com/api/v1/oauth/refresh
+    uri: https://apiv1.teams.operto.com/oauth/refresh
     body:
       encoding: US-ASCII
       string: ''

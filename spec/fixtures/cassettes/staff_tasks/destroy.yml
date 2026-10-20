@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://teams-api.operto.com/api/v1/stafftasks/123456
+    uri: https://apiv1.teams.operto.com/stafftasks/123456
     body:
       encoding: US-ASCII
       string: ''

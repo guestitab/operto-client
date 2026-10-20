@@ -30,7 +30,7 @@ RSpec.describe Operto::Tasks::Index do
 
   context 'with an out-of-range complete-by time' do
     before do
-      stub_request(:get, 'https://teams-api.operto.com/api/v1/tasks?PropertyID=111036&Sort=TaskID%20desc&page=1&per_page=10')
+      stub_request(:get, 'https://apiv1.teams.operto.com/tasks?PropertyID=111036&Sort=TaskID%20desc&page=1&per_page=10')
         .to_return(
           body: { data: [{ TaskID: 58_667_711, TaskCompleteByDate: '2026-10-14', TaskCompleteByTime: '100:100' }] }.to_json,
           headers: { 'Content-Type' => 'application/json' }

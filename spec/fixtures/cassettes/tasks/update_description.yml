@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://teams-api.operto.com/api/v1/tasks/39923513
+    uri: https://apiv1.teams.operto.com/tasks/39923513
     body:
       encoding: UTF-8
       string: "{\"TaskDescription\":\"Make up the sofa bed\"}"

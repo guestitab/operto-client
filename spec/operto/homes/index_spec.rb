@@ -20,7 +20,7 @@ RSpec.describe Operto::Homes::Index do
   context 'with invalid arguments' do
     context 'with an unparseable create date' do
       before do
-        stub_request(:get, 'https://teams-api.operto.com/api/v1/properties?page=1&per_page=2')
+        stub_request(:get, 'https://apiv1.teams.operto.com/properties?page=1&per_page=2')
           .to_return(
             body: { data: [{ PropertyID: 110_784, CreateDate: 'n/a' }] }.to_json,
             headers: { 'Content-Type' => 'application/json' }

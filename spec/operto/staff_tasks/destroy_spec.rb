@@ -15,7 +15,7 @@ RSpec.describe Operto::StaffTasks::Destroy do
 
   context 'when Operto returns an error' do
     before do
-      stub_request(:delete, "https://teams-api.operto.com/api/v1/stafftasks/#{staff_task_id}")
+      stub_request(:delete, "https://apiv1.teams.operto.com/stafftasks/#{staff_task_id}")
         .to_return(
           status: 404,
           body: { ReasonCode: 404, ReasonText: 'Staff task not found' }.to_json,

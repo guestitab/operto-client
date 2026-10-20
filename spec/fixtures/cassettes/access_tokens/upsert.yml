@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://teams-api.operto.com/api/v1/oauth/login
+    uri: https://apiv1.teams.operto.com/oauth/login
     body:
       encoding: UTF-8
       string: '{"API_Key":"test","API_Value":"test"}'

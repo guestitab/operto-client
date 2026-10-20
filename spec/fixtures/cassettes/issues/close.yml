@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://teams-api.operto.com/api/v1/issues
+    uri: https://apiv1.teams.operto.com/issues
     body:
       encoding: UTF-8
       string: '{"request":"{\"IssueID\":\"2181372\",\"Update\":true,\"ClosedDate\":\"20260415\"}"}'
