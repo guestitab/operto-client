@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2 - 2026-10-20
+
+- The default `base_url` is now `https://apiv1.teams.operto.com/`, the new Operto Teams Partner API host. Paths there have no `/api/v1` prefix, so a host that sets its own `base_url` must drop it too.
+
 ## 0.4.1 - 2026-10-14
 
 - `Tasks::Index`, `Tasks::Show`, `Tasks::Create` and `Tasks::Update` read an out-of-range start or due time (such as `100:100`) as the date with no time instead of failing with `ArgumentError`.
