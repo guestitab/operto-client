@@ -2,13 +2,13 @@ RSpec.describe Operto::Client do
   describe '.connection' do
     subject(:response) { described_class.connection.get('tasks/1') }
 
-    let(:url) { 'https://teams-api.operto.com/api/v1/tasks/1' }
+    let(:url) { 'https://apiv1.teams.operto.com/tasks/1' }
     let(:json) { { 'Content-Type' => 'application/json' } }
     let(:expired) { { ReasonCode: 401, ReasonText: 'api.response.error.auth_token_expired' }.to_json }
     let(:found) { { status: 200, body: { data: [] }.to_json, headers: json } }
 
     before do
-      stub_request(:post, 'https://teams-api.operto.com/api/v1/oauth/login').to_return(
+      stub_request(:post, 'https://apiv1.teams.operto.com/oauth/login').to_return(
         status: 201,
         body: { Access_Token: { token: 'renewed-token', Expiry: '3600' }, Refresh_Token: { token: 'refresh-token', Expiry: '86400' } }.to_json,
         headers: json
@@ -36,11 +36,11 @@ RSpec.describe Operto::Client do
       context 'with a POST' do
         subject(:response) { described_class.connection.post('tasks', { TaskName: 'Deep clean' }) }
 
-        before { stub_request(:post, 'https://teams-api.operto.com/api/v1/tasks').to_return({ status: 401, body: expired, headers: json }, found) }
+        before { stub_request(:post, 'https://apiv1.teams.operto.com/tasks').to_return({ status: 401, body: expired, headers: json }, found) }
 
         it 'replays the same body with the renewed token' do
           expect(response.status).to eq(200)
-          expect(WebMock).to have_requested(:post, 'https://teams-api.operto.com/api/v1/tasks')
+          expect(WebMock).to have_requested(:post, 'https://apiv1.teams.operto.com/tasks')
             .with(body: { TaskName: 'Deep clean' }.to_json, headers: { 'Authorization' => 'VRS renewed-token' }).once
         end
       end
@@ -81,12 +81,12 @@ RSpec.describe Operto::Client do
 
       before do
         stub_const('Operto::Client::RETRY_OPTIONS', described_class::RETRY_OPTIONS.merge(interval: 0))
-        stub_request(:post, 'https://teams-api.operto.com/api/v1/tasks').to_return(status: 503)
+        stub_request(:post, 'https://apiv1.teams.operto.com/tasks').to_return(status: 503)
       end
 
       it 'does not retry' do
         expect(response.status).to eq(503)
-        expect(WebMock).to have_requested(:post, 'https://teams-api.operto.com/api/v1/tasks').once
+        expect(WebMock).to have_requested(:post, 'https://apiv1.teams.operto.com/tasks').once
       end
     end
   end

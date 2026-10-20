@@ -17,7 +17,7 @@ RSpec.describe Operto::StaffTasks::Create do
 
   context 'when Operto returns an error' do
     before do
-      stub_request(:post, 'https://teams-api.operto.com/api/v1/stafftasks')
+      stub_request(:post, 'https://apiv1.teams.operto.com/stafftasks')
         .to_return(
           status: 400,
           body: { ReasonCode: 400, ReasonText: 'Invalid task' }.to_json,

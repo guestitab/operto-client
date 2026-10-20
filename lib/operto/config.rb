@@ -6,7 +6,7 @@ module Operto
     attr_accessor :client_id, :secret, :token_store, :base_url
 
     def initialize
-      @base_url = 'https://teams-api.operto.com/api/v1/'.freeze
+      @base_url = 'https://apiv1.teams.operto.com/'.freeze
       @token_store = MemoryTokenStore.new
     end
   end

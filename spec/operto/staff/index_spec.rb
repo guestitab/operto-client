@@ -20,7 +20,7 @@ RSpec.describe Operto::Staff::Index do
   context 'with invalid arguments' do
     context 'with an unparseable create date' do
       before do
-        stub_request(:get, 'https://teams-api.operto.com/api/v1/staff?page=1&per_page=10')
+        stub_request(:get, 'https://apiv1.teams.operto.com/staff?page=1&per_page=10')
           .to_return(
             body: { data: [{ StaffID: 41_295, CreateDate: 'n/a' }] }.to_json,
             headers: { 'Content-Type' => 'application/json' }

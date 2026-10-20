@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://teams-api.operto.com/api/v1/tasks/44683131
+    uri: https://apiv1.teams.operto.com/tasks/44683131
     body:
       encoding: UTF-8
       string: '{"PropertyID":"110784","TaskRuleID":"27986","TaskName":"[TEST]

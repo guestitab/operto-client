@@ -2,7 +2,7 @@
 http_interactions:
   - request:
       method: post
-      uri: https://teams-api.operto.com/api/v1/tasks
+      uri: https://apiv1.teams.operto.com/tasks
       body:
         encoding: UTF-8
         string:

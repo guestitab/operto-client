@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://teams-api.operto.com/api/v1/stafftasks
+    uri: https://apiv1.teams.operto.com/stafftasks
     body:
       encoding: UTF-8
       string: '{"TaskID":"44683131","StaffID":"41295","PropertyID":"110784"}'
