@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- `Tasks::Index`, `Tasks::Show`, `Tasks::Create` and `Tasks::Update` return `min_minutes` and `max_minutes`, Operto's time to complete in whole minutes, or `nil` when Operto has none.
+
 ## 0.4.2 - 2026-10-20
 
 - The default `base_url` is now `https://apiv1.teams.operto.com/`, the new Operto Teams Partner API host. Paths there have no `/api/v1` prefix, so a host that sets its own `base_url` must drop it too.

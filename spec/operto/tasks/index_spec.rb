@@ -16,6 +16,8 @@ RSpec.describe Operto::Tasks::Index do
             description: nil,
             starts_at: Time.zone.parse('2026-10-15 10:00'),
             due_at: Time.zone.parse('2026-10-15 15:30'),
+            min_minutes: 120,
+            max_minutes: 180,
             active: true,
             completed: false,
             approved_at: nil,
@@ -39,6 +41,20 @@ RSpec.describe Operto::Tasks::Index do
 
     it 'keeps the due date without a time' do
       expect(result.value!).to include(results: [a_hash_including(due_at: Time.zone.parse('2026-10-14'))])
+    end
+  end
+
+  context 'with fractional and missing times to complete' do
+    before do
+      stub_request(:get, 'https://apiv1.teams.operto.com/tasks?PropertyID=111036&Sort=TaskID%20desc&page=1&per_page=10')
+        .to_return(
+          body: { data: [{ TaskID: 20_119_493, MinTimeToComplete: 0, MaxTimeToComplete: 0.66666 }] }.to_json,
+          headers: { 'Content-Type' => 'application/json' }
+        )
+    end
+
+    it 'reads them as whole minutes and a zero as none' do
+      expect(result.value!).to include(results: [a_hash_including(min_minutes: nil, max_minutes: 40)])
     end
   end
 
