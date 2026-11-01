@@ -49,6 +49,7 @@ module Operto
           name: task[:TaskName]&.strip,
           description: task[:TaskDescription],
           **task_schedule(task),
+          **task_effort(task),
           **task_progress(task)
         }
       end
@@ -58,6 +59,19 @@ module Operto
           starts_at: task_time(task[:TaskStartDate] || task[:TaskDate], task[:TaskStartTime] || task[:TaskTime]),
           due_at: task_time(task[:TaskCompleteByDate], task[:TaskCompleteByTime])
         }
+      end
+
+      # Operto keeps the time to complete in hours, as 1.5 or "0.66666".
+      def task_effort(task)
+        {
+          min_minutes: task_minutes(task[:MinTimeToComplete]),
+          max_minutes: task_minutes(task[:MaxTimeToComplete])
+        }
+      end
+
+      def task_minutes(hours)
+        minutes = (hours.to_d * 60).round
+        minutes if minutes.positive?
       end
 
       def task_progress(task)
